@@ -8,66 +8,81 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body {
-      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-      color: #1a1a2e;
-      background: #f8f9fc;
+      font-family: 'Roboto', 'Segoe UI', system-ui, -apple-system, sans-serif;
+      color: #f1f1f1;
+      background: #0f0f0f;
       line-height: 1.6;
     }
     :root {
-      --navy:   #0d2145;
-      --blue:   #1a4a8a;
-      --accent: #2563eb;
-      --light:  #e8eef8;
-      --white:  #ffffff;
-      --gray:   #64748b;
-      --border: #d1dbe8;
-      --shadow: 0 2px 12px rgba(13,33,69,0.09);
+      --navy:   #0f0f0f;
+      --blue:   #272727;
+      --accent: #f1f1f1;
+      --heading:#f1f1f1;
+      --red:    #ff0000;
+      --light:  #272727;
+      --white:  #212121;
+      --gray:   #aaaaaa;
+      --border: #3d3d3d;
+      --shadow: 0 4px 18px rgba(0,0,0,0.4);
       --radius: 10px;
     }
     nav {
       position: sticky; top: 0; z-index: 100;
-      background: var(--navy);
+      background: #0f0f0f;
+      border-bottom: 1px solid #303030;
       display: flex; align-items: center; justify-content: space-between;
       padding: 0 5vw;
       height: 60px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.18);
     }
     .nav-brand { color: #fff; font-weight: 700; font-size: 1.1rem; letter-spacing: 0.02em; }
-    .nav-links { display: flex; gap: 2rem; list-style: none; }
-    .nav-links a { color: #cbd5e1; text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
-    .nav-links a:hover { color: #fff; }
+    .nav-links { display: flex; gap: 0.5rem; list-style: none; }
+    .nav-links a { color: #f1f1f1; text-decoration: none; font-size: 0.9rem; font-weight: 500; padding: 8px 14px; border-radius: 18px; transition: background 0.2s; }
+    .nav-links a:hover { background: #272727; }
     #hero {
-      background: linear-gradient(135deg, var(--navy) 0%, var(--blue) 100%);
+      background:
+        radial-gradient(650px circle at 88% 25%, rgba(255,255,255,0.07), transparent 60%),
+        radial-gradient(550px circle at 8% 85%, rgba(255,255,255,0.05), transparent 55%),
+        linear-gradient(135deg, #0a0a0a 0%, #232323 100%);
       color: #fff;
       padding: 90px 5vw 80px;
       display: flex; flex-direction: row; align-items: center; justify-content: space-between; gap: 40px;
     }
     .hero-content { display: flex; flex-direction: column; align-items: flex-start; flex: 1; }
-    .hero-photo-wrap { flex-shrink: 0; }
+    .hero-photo-wrap { flex-shrink: 0; position: relative; }
+    .hero-photo-wrap::before {
+      content: '';
+      position: absolute; inset: -26px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,255,255,0.22) 0%, rgba(255,255,255,0.06) 55%, transparent 75%);
+      filter: blur(6px);
+      z-index: 0;
+    }
     .hero-photo-wrap img {
       width: 300px; height: 300px;
       border-radius: 50%;
       object-fit: cover;
       object-position: center top;
       border: 4px solid rgba(255,255,255,0.35);
-      box-shadow: 0 8px 32px rgba(0,0,0,0.35);
+      box-shadow: 0 0 50px 6px rgba(255,255,255,0.1), 0 8px 32px rgba(0,0,0,0.45);
+      position: relative; z-index: 1;
     }
     @media (max-width: 680px) {
       #hero { flex-direction: column-reverse; align-items: flex-start; }
       .hero-photo-wrap img { width: 160px; height: 160px; }
     }
     .hero-tag {
-      background: rgba(255,255,255,0.12);
-      border: 1px solid rgba(255,255,255,0.25);
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(220,38,38,0.65);
+      box-shadow: 0 0 10px rgba(220,38,38,0.25);
       border-radius: 20px;
       padding: 4px 14px;
       font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase;
-      margin-bottom: 18px; color: #bfdbfe;
+      margin-bottom: 18px; color: #d4d4d4;
     }
     #hero h1 { font-size: clamp(2.2rem, 5vw, 3.5rem); font-weight: 800; line-height: 1.1; margin-bottom: 12px; }
-    #hero h1 span { color: #93c5fd; }
-    .hero-subtitle { font-size: 1.15rem; color: #bfdbfe; max-width: 560px; margin-bottom: 30px; }
-    .hero-meta { display: flex; gap: 20px; flex-wrap: wrap; font-size: 0.875rem; color: #93c5fd; margin-bottom: 36px; }
+    #hero h1 span { color: var(--red); }
+    .hero-subtitle { font-size: 1.15rem; color: #d4d4d4; max-width: 560px; margin-bottom: 30px; }
+    .hero-meta { display: flex; gap: 20px; flex-wrap: wrap; font-size: 0.875rem; color: #c4c4c4; margin-bottom: 36px; }
     .hero-meta span { display: flex; align-items: center; gap: 6px; }
     .hero-buttons { display: flex; gap: 14px; flex-wrap: wrap; }
     .btn { padding: 11px 24px; border-radius: 6px; font-size: 0.9rem; font-weight: 600; text-decoration: none; cursor: pointer; transition: all 0.2s; display: inline-flex; align-items: center; gap: 8px; border: 2px solid transparent; }
@@ -76,598 +91,22 @@
     .btn-outline { background: transparent; border-color: rgba(255,255,255,0.5); color: #fff; }
     .btn-outline:hover { background: rgba(255,255,255,0.1); border-color: #fff; }
     section { padding: 72px 5vw; }
-    section:nth-child(even) { background: var(--white); }
+    section:nth-child(even) { background: #181818; }
     .section-label { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--accent); margin-bottom: 6px; }
-    h2 { font-size: clamp(1.6rem, 3vw, 2.1rem); font-weight: 800; color: var(--navy); margin-bottom: 10px; }
+    h2 { font-size: clamp(1.6rem, 3vw, 2.1rem); font-weight: 800; color: var(--heading); margin-bottom: 10px; }
     .section-intro { color: var(--gray); max-width: 600px; margin-bottom: 44px; }
     .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
     @media (max-width: 700px) { .about-grid { grid-template-columns: 1fr; } }
-    .about-text p { color: #374151; margin-bottom: 14px; }
+    .about-text p { color: #d4d4d8; margin-bottom: 14px; }
     .about-highlights { display: flex; flex-direction: column; gap: 14px; }
     .highlight-card { background: var(--light); border-left: 4px solid var(--accent); border-radius: 0 var(--radius) var(--radius) 0; padding: 14px 18px; }
-    .highlight-card strong { display: block; color: var(--navy); margin-bottom: 2px; font-size: 0.95rem; }
+    .highlight-card strong { display: block; color: var(--heading); margin-bottom: 2px; font-size: 0.95rem; }
     .highlight-card span { color: var(--gray); font-size: 0.875rem; }
     .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px; }
     .project-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; box-shadow: var(--shadow); transition: transform 0.2s, box-shadow 0.2s; }
-    .project-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(13,33,69,0.13); }
-    .project-badge { display: inline-block; background: var(--light); color: var(--accent); font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; border-radius: 4px; padding: 3px 9px; margin-bottom: 12px; }
-    .project-card h3 { font-size: 1.05rem; color: var(--navy); margin-bottom: 8px; }
+    .project-card:hover { transform: translateY(-4px); box-shadow: 0 14px 34px rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.04); }
+    .project-badge { display: inline-block; background: #f1f1f1; color: #0f0f0f; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; border-radius: 20px; padding: 4px 12px; margin-bottom: 12px; }
+    .project-card h3 { font-size: 1.05rem; color: var(--heading); margin-bottom: 8px; }
     .project-card p { color: var(--gray); font-size: 0.875rem; line-height: 1.55; margin-bottom: 14px; }
     .project-tags { display: flex; flex-wrap: wrap; gap: 6px; }
-    .tag { background: #f1f5f9; color: #475569; border-radius: 4px; padding: 2px 9px; font-size: 0.75rem; font-weight: 500; }
-    .project-date { color: #94a3b8; font-size: 0.78rem; margin-top: 10px; }
-    .timeline { display: flex; flex-direction: column; gap: 0; }
-    .timeline-item { display: flex; gap: 24px; padding-bottom: 36px; position: relative; }
-    .timeline-item::before { content: ''; position: absolute; left: 19px; top: 40px; width: 2px; height: calc(100% - 20px); background: var(--border); }
-    .timeline-item:last-child::before { display: none; }
-    .tl-dot { width: 40px; height: 40px; flex-shrink: 0; background: var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 1rem; position: relative; z-index: 1; box-shadow: 0 0 0 4px var(--light); }
-    .tl-content { flex: 1; }
-    .tl-header { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 8px; margin-bottom: 6px; }
-    .tl-title { font-size: 1rem; font-weight: 700; color: var(--navy); }
-    .tl-org { font-size: 0.875rem; color: var(--accent); font-weight: 600; }
-    .tl-date { font-size: 0.8rem; background: var(--light); color: var(--blue); border-radius: 20px; padding: 3px 12px; font-weight: 600; white-space: nowrap; }
-    .tl-content ul { padding-left: 18px; margin-top: 6px; }
-    .tl-content li { color: var(--gray); font-size: 0.875rem; margin-bottom: 4px; }
-    .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 24px; }
-    .skill-group { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 22px; box-shadow: var(--shadow); }
-    .skill-group-title { font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 14px; padding-bottom: 8px; border-bottom: 2px solid var(--light); }
-    .skill-chips { display: flex; flex-wrap: wrap; gap: 8px; }
-    .chip { background: var(--light); color: var(--navy); border-radius: 5px; padding: 5px 12px; font-size: 0.8rem; font-weight: 500; }
-    .edu-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px 32px; box-shadow: var(--shadow); display: flex; gap: 24px; align-items: center; flex-wrap: wrap; margin-bottom: 28px; }
-    .edu-icon { width: 56px; height: 56px; flex-shrink: 0; background: var(--navy); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.6rem; }
-    .edu-info h3 { font-size: 1.1rem; color: var(--navy); margin-bottom: 4px; }
-    .edu-info p { color: var(--gray); font-size: 0.875rem; }
-    .edu-info .gpa { display: inline-block; background: #dcfce7; color: #15803d; font-weight: 700; font-size: 0.8rem; padding: 2px 10px; border-radius: 20px; margin-top: 6px; }
-    .edu-info .honors { display: inline-block; background: #fef9c3; color: #854d0e; font-weight: 700; font-size: 0.8rem; padding: 2px 10px; border-radius: 20px; margin-top: 6px; margin-left: 6px; }
-    #contact { background: var(--navy); color: #fff; text-align: center; }
-    #contact .section-label { color: #93c5fd; }
-    #contact h2 { color: #fff; }
-    #contact .section-intro { color: #94a3b8; margin: 0 auto 40px; }
-    .contact-cards { display: flex; flex-wrap: wrap; justify-content: center; gap: 18px; }
-    .contact-card { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.15); border-radius: var(--radius); padding: 22px 28px; display: flex; align-items: center; gap: 14px; text-decoration: none; color: #e2e8f0; transition: all 0.2s; min-width: 220px; }
-    .contact-card:hover { background: rgba(255,255,255,0.13); border-color: rgba(255,255,255,0.3); color: #fff; }
-    .contact-icon { width: 44px; height: 44px; flex-shrink: 0; background: var(--accent); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; }
-    .contact-info strong { display: block; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; color: #94a3b8; margin-bottom: 2px; }
-    .contact-info span { font-size: 0.9rem; }
-    footer { background: #060e1e; color: #475569; text-align: center; padding: 22px; font-size: 0.82rem; }
-    .divider { width: 48px; height: 4px; background: var(--accent); border-radius: 2px; margin-bottom: 28px; }
-    /* EcoFil Gallery */
-    .ecofil-gallery { margin-top: 18px; }
-    .gallery-main { position: relative; width: 100%; height: 180px; border-radius: 8px; overflow: hidden; background: #000; margin-bottom: 8px; }
-    .gallery-main img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .gallery-caption { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.65)); color: #fff; font-size: 0.78rem; padding: 18px 12px 8px; }
-    .gallery-thumbs { display: flex; gap: 6px; flex-wrap: wrap; overflow: hidden; }
-    .thumb-extra { display: none; }
-    .thumb-more {
-      width: 52px; height: 52px; flex-shrink: 0;
-      border-radius: 5px; cursor: pointer;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 0.75rem; font-weight: 700; letter-spacing: 0.02em;
-      position: relative; overflow: hidden;
-      background-size: cover; background-position: center;
-    }
-    .thumb-more::before {
-      content: ''; position: absolute; inset: -4px;
-      background: inherit; filter: blur(4px);
-      background-size: cover; background-position: center;
-      z-index: 0;
-    }
-    .thumb-more::after {
-      content: ''; position: absolute; inset: 0;
-      background: rgba(10,26,56,0.55); border-radius: 5px;
-      z-index: 1; transition: background 0.2s;
-    }
-    .thumb-more:hover::after { background: rgba(37,99,235,0.7); }
-    .thumb-more span { position: relative; z-index: 2; color: #fff; }
-    .gallery-expanded .thumb-extra { display: block; }
-    .gallery-expanded .thumb-more { display: none; }
-    .thumb-less { display: none; width: 100%; text-align: center; font-size: 0.78rem; font-weight: 600; color: var(--accent); cursor: pointer; padding: 4px 0; margin-top: 2px; }
-    .thumb-less:hover { text-decoration: underline; }
-    .thumb-video { background: #0d2145 center/cover no-repeat; display: flex; align-items: center; justify-content: center; position: relative; }
-    .thumb-video::after { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.35); border-radius: 5px; transition: background 0.2s; }
-    .thumb-video:hover::after { background: rgba(0,0,0,0.15); }
-    .play-icon { font-size: 1.4rem; color: #fff; pointer-events: none; position: relative; z-index: 1; filter: drop-shadow(0 1px 3px rgba(0,0,0,0.6)); }
-    .thumb-video:hover .play-icon { transform: scale(1.15); transition: transform 0.15s; }
-    .gallery-expanded .thumb-less { display: block; }
-    .thumb { flex: 1; height: 52px; object-fit: cover; border-radius: 5px; cursor: pointer; opacity: 0.55; border: 2px solid transparent; transition: opacity 0.2s, border-color 0.2s; }
-    .thumb:hover { opacity: 0.85; }
-    .thumb.active { opacity: 1; border-color: var(--accent); }
-  </style>
-</head>
-<body>
-
-<nav>
-  <div class="nav-brand">Ryan Dennis</div>
-  <ul class="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#projects">Engineering Projects</a></li>
-    <li><a href="#other-projects">Other Projects</a></li>
-    <li><a href="#experience">Experience</a></li>
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-</nav>
-
-<section id="hero">
-  <div class="hero-content">
-    <div class="hero-tag">Mechanical Engineering Student · Texas A&amp;M University</div>
-    <h1>Ryan Dennis</h1>
-    <p class="hero-subtitle">Honors Mechanical Engineering student, hands-on builder, and founder of RAD Builds&#8482; &#8212; passionate about mechanical design, fabrication, and bringing creative ideas to life.</p>
-    <div class="hero-meta">
-      <span>&#128205; Lansing, KS</span>
-      <span>&#127891; Texas A&amp;M University</span>
-      <span>&#11088; GPA: 3.93</span>
-      <span>&#128197; Graduating May 2028</span>
-    </div>
-    <div class="hero-buttons">
-	  <a href="Ryan_Dennis_Resume.pdf" download class="btn btn-primary">Download Resume &#x2B07;</a>
-      <a href="https://www.linkedin.com/in/ryandenn05" target="_blank" class="btn btn-outline">LinkedIn &#x2197;</a>
-      <a href="https://www.youtube.com/@radbuilds3000" target="_blank" class="btn btn-outline">YouTube &#x2197;</a>
-      <a href="mailto:ryandenn05@gmail.com" class="btn btn-outline">Get in Touch &#x2709;</a>
-    </div>
-  </div>
-  <div class="hero-photo-wrap">
-    <img src="headshot.jpg" alt="Ryan Dennis" />
-  </div>
-</section>
-
-<section id="about">
-  <div class="section-label">About Me</div>
-  <h2>Engineer. Designer. Creator.</h2>
-  <div class="divider"></div>
-  <div class="about-grid">
-    <div class="about-text">
-      <p>I am an Honors Mechanical Engineering student at Texas A&amp;M University with a 3.93 GPA and Minors in Physics &amp; Mathematics. I love to be at the intersection of coursework theory, system design, and technical hands-on creation &#8212; whether that's designing CAD models in SolidWorks, fabricating with metal and polymers, or writing simulation code in Python.</p>
-      <p>Outside of academics, I'm the founder of <strong>RAD Builds&#8482;</strong>, a custom prop-building business and YouTube channel with 1,000+ subscribers where I teach others how to create high-quality props. I am also a driving member in our multidisciplinary project team creating EcoFil, a 3-phase 3D printing filament recycler from scratch, in Aggies Create. I've also studied engineering economics abroad in Greece and competed in engineering design challenges through the Texas A&amp;M's Student Chapter of the American Society of Mechanical Engineers (ASME).</p>
-      <p>I'm driven by curiosity, craftsmanship, and the challenge of turning an idea on paper into something real.</p>
-    </div>
-    <div class="about-highlights">
-      <div class="highlight-card"><strong>&#127979; Texas A&amp;M University</strong><span>B.S. Mechanical Engineering + Physics &amp; Math Minors &#183; Engineering Honors &#183; Dean's Honor Roll</span></div>
-      <div class="highlight-card"><strong>&#127757; Study Abroad &#8211; Greece</strong><span>Engineering Economic Analysis in Thessaloniki &amp; Athens</span></div>
-      <div class="highlight-card"><strong>&#127942; ASME Sophomore Retreat Winner</strong><span>40-member engineering design &amp; networking competition</span></div>
-      <div class="highlight-card"><strong>&#127908; RAD Builds&#8482; &#8211; YouTube Creator</strong><span>1,000+ subscribers &#183; custom prop builds &#183; instructional videos</span></div>
-      <div class="highlight-card"><strong>&#9881;&#65039; EcoFil &#8211; Aggies Create</strong><span>Designing a 3-phase 3D printing filament recycler from scratch</span></div>
-      <div class="highlight-card"><strong>&#127942; Aggies Create Spirit Award</strong><span>Awarded to the member of the 100+ person organization who best embodies the spirit of creativity, hands-on design, and what Aggies Create is all about</span></div>
-    </div>
-  </div>
-</section>
-
-<section id="projects">
-  <div class="section-label">Engineering Projects</div>
-  <h2>Engineering &amp; Academic Work</h2>
-  <div class="divider"></div>
-  <p class="section-intro">A selection of academic, research, and personal projects spanning mechanical design, software simulation, fabrication, and creative building.</p>
-  <div class="projects-grid">
-
-    <div class="project-card">
-      <div class="project-badge">Current &#183; Research</div>
-      <h3>EcoFil &#8211; 3D Printing Recycler</h3>
-      <p>Collaborating on a 5-person team to design a closed-loop 3-phase recycling system converting 3D printing waste into reusable filament. Our three phases are: shredding, dehydration, and thermal re-extrusion, each constructed from wood, 16-gauge metal, and 3D prints. After finishing phase 1 and 2, the organization selected us to present at their expo this past spring.</p>
-      <div class="project-tags">
-        <span class="tag">SolidWorks CAD</span>
-        <span class="tag">Welding</span>
-        <span class="tag">Plasma Cutting</span>
-        <span class="tag">3D Printing</span>
-        <span class="tag">Team Lead</span>
-      </div>
-      <div class="project-date">Jan 2025 &#8211; Present &#183; Aggies Create</div>
-      <div class="ecofil-gallery">
-        <div class="gallery-main">
-          <video id="gv-ecofil" loop style="width:100%;height:100%;object-fit:cover;border-radius:8px;display:none;"><source src="" type="video/mp4"></video>
-          <img id="gm-ecofil" src="ecofil-main.jpg" alt="EcoFil Phase 1 Shredder" />
-          <div class="gallery-caption" id="gc-ecofil">Phase 1+2 &#8212; Shredder &amp; Oven Prototypes</div>
-        </div>
-        <div class="gallery-thumbs">
-          <img class="thumb active" src="ecofil-main.jpg" data-caption="Phase 1+2 &#8212; Shredder &amp; Oven Prototypes" onclick="setMain(this,'ecofil')" />
-          <img class="thumb" src="ecofil-presentation.jpg" data-caption="Presenting at<br>Aggies Create's Innovation Expo" onclick="setMain(this,'ecofil')" />
-          <img class="thumb" src="ecofil-shredder-solo.jpg" data-caption="Phase 1 &#8212; Shredder unit" onclick="setMain(this,'ecofil')" />
-          <img class="thumb" src="ecofil-exploded.png" data-caption="Exploded CAD view of the convection oven assembly" onclick="setMain(this,'ecofil')" />
-          <img class="thumb" src="ecofil-sparks.jpg" data-caption="Grinding the oven frame" onclick="setMain(this,'ecofil')" />
-          <div class="thumb thumb-video" style="background-image:url('ecofil-shredder-vid-thumb.jpg')" data-video="Shredder Working Video.mp4" data-caption="Shredder in action" onclick="setMain(this,'ecofil')"><span class="play-icon">&#9654;</span></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="project-card">
-      <div class="project-badge">Academic</div>
-      <h3>Rankine Cycle Analysis &#8212; Ivanpah CSP Plant</h3>
-      <p>Modeled and analyzed the Rankine cycle of the Ivanpah Concentrated Solar Power plant using Python and thermodynamic steam tables. Produced T&#8211;s diagrams, efficiency vs. torque curves, and parametric plots to characterize real-world cycle performance and irreversibilities. Also performed extensive research into increasing the efficiency of the cycle from 12.8% to 43% using state-of-the-art components, reheating with two turbines, and regenerative feed-water heating.</p>
-      <div class="project-tags" style="margin-bottom:14px;">
-        <span class="tag">Thermodynamics</span>
-        <span class="tag">Python</span>
-        <span class="tag">Rankine Cycle</span>
-        <span class="tag">Data Visualization</span>
-      </div>
-      <div class="project-date">May 2026 &#183; MEEN 315 &#8212; Principles of Thermodynamics</div>
-      <div class="ecofil-gallery" style="margin-top:14px;">
-        <div class="gallery-main">
-          <img id="gm-rankine" src="rankine-000.png" alt="T-s diagram — actual Rankine cycle" style="display:block;width:100%;height:100%;object-fit:contain;background:#f8fafc;" />
-          <div class="gallery-caption" id="gc-rankine">Developed T&#8211;s diagram of the actual Rankine cycle for the Ivanpah CSP plant</div>
-        </div>
-
-      </div>
-    </div>
-
-
-    <div class="project-card">
-      <div class="project-badge">Academic</div>
-      <h3>Mars Rover Simulation</h3>
-      <p>Solely responsible for 7 of 9 Phase 2 deliverables &#8212; built a complete Python rover simulation engine modeling rover dynamics ODEs, motor speed, mechanical power output, battery energy consumption, and full trajectory simulation. Also reverse-engineered and documented an undocumented prior codebase for full project handoff.</p>
-      <div class="project-tags">
-        <span class="tag">Python</span>
-        <span class="tag">ODE Modeling</span>
-        <span class="tag">Numerical Methods</span>
-        <span class="tag">Simulation</span>
-      </div>
-      <div class="project-date">Jan &#8211; May 2026 &#183; Engineering Analysis Course</div>
-      <div class="ecofil-gallery" style="margin-top:14px;">
-        <div class="gallery-main">
-          <img id="gm-rover" src="rover-plot1.png" alt="Terminal rover speed vs. rolling resistance and terrain slope" style="display:block;width:100%;height:100%;object-fit:contain;background:#f8fafc;" />
-          <div class="gallery-caption" id="gc-rover">Terminal rover speed vs. rolling resistance and terrain slope</div>
-        </div>
-        <div class="gallery-thumbs">
-          <img class="thumb active" src="rover-plot1.png" data-caption="Terminal rover speed vs. rolling resistance and terrain slope" onclick="setMain(this,'rover')" alt="3D surface plot — terminal speed" />
-          <img class="thumb" src="rover-plot2.png" data-caption="Terrain angle vs. position — cubic spline interpolation of Mars surface data" onclick="setMain(this,'rover')" alt="Terrain angle vs. position" />
-          <img class="thumb" src="rover-plot3.png" data-caption="Motor efficiency vs. torque — cubic interpolation of given data points" onclick="setMain(this,'rover')" alt="Efficiency vs torque" />
-          <img class="thumb" src="rover-plot4.png" data-caption="Velocity and motor power output vs. time over full terrain simulation" onclick="setMain(this,'rover')" alt="Velocity and power vs. time" />
-          <img class="thumb" src="rover-plot5.png" data-caption="Parachute diameter study — simulated time and rover ground speed at termination" onclick="setMain(this,'rover')" alt="Parachute diameter study" />
-        </div>
-      </div>
-    </div>
-    <div class="project-card">
-      <div class="project-badge">Academic</div>
-      <h3>Mechanical Ping-Pong Toy</h3>
-      <p>Designed, manufactured, and assembled a crank-driven mechanical toy using Chebyshev lambda linkages to convert rotational motion into controlled linear motion. Performed kinematic analysis, gear ratio optimization, and tolerance refinement; executed laser cutting and 3D printing of the final design.</p>
-      <div class="project-tags">
-        <span class="tag">SolidWorks</span>
-        <span class="tag">Kinematic Analysis</span>
-        <span class="tag">Laser Cutting</span>
-        <span class="tag">3D Printing</span>
-      </div>
-      <div class="project-date">Sep &#8211; Dec 2025 &#183; Geometric Modeling Course</div>
-      <div class="ecofil-gallery">
-        <div class="gallery-main">
-          <img id="gm-tt" src="tt-physical.jpg" alt="Finished trophy with laser-engraved A&amp;M base" />
-          <video id="gv-tt" loop style="width:100%;height:100%;object-fit:cover;border-radius:8px;display:none;"><source src="" type="video/mp4"></video>
-          <div class="gallery-caption" id="gc-tt">3D-printed & Laser-cut Ping-Pong Toy</div>
-        </div>
-        <div class="gallery-thumbs">
-          <img class="thumb active" src="tt-physical.jpg" data-caption="3D-printed & Laser-cut Ping-Pong Toy" onclick="setMain(this,'tt')" alt="Table Tennis Championship trophy" />
-          <img class="thumb" src="Final Ping Pong Toy back.png" data-caption="Final Ping Pong Toy — back view" onclick="setMain(this,'tt')" alt="Ping Pong Toy back" />
-          <img class="thumb" src="tt-new1.png" data-caption="Final Ping-Pong Toy — CAD mechanism view" onclick="setMain(this,'tt')" alt="TT mechanism detail" />
-          <img class="thumb" src="tt-new2.jpg" data-caption="Laser-cutter in action" onclick="setMain(this,'tt')" alt="TT assembly" />
-          <div class="thumb thumb-video" style="background-image:url('tt-vid1-thumb.jpg')" data-video="tt-vid1.mp4" data-caption="Quick laser-cut prototype" onclick="setMain(this,'tt')"><span class="play-icon">&#9654;</span></div>
-          <img class="thumb" src="tt-new3.png" data-caption="CAD view of prototype" onclick="setMain(this,'tt')" alt="TT design overview" />
-        </div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<section id="other-projects">
-  <div class="section-label">Other Projects</div>
-  <h2>Personal Builds &amp; Design</h2>
-  <div class="divider"></div>
-  <p class="section-intro">Outside of coursework, I'm always building — laser-cut gifts, fabricated decorations, and one-off personal projects that keep my hands and creative instincts sharp.</p>
-  <div class="projects-grid">
-
-    <div class="project-card">
-      <div class="project-badge">Personal &#183; Business</div>
-      <h3>RAD Builds&#8482; &#8211; YouTube<br>& Prop Commissioning</h3>
-      <p>Founded and operated a fabrication business building movie props (Thor's Stormbreaker, Attack on Titan ODM Gear, Iron Man helmet, Infinity Gauntlet) from foam, wood, PVC, and resin. Produced instructional YouTube videos for 1,000+ subscribers and fulfilled custom merchandise orders for 30+ clients.</p>
-      <div class="project-tags">
-        <span class="tag">Fabrication</span>
-        <span class="tag">CAD / Onshape</span>
-        <span class="tag">Video Production</span>
-        <span class="tag">Entrepreneurship</span>
-        <span class="tag">Mural Painting</span>
-        <span class="tag">LED Electronics</span>
-      </div>
-      <div class="project-date">Aug 2022 &#8211; Present &#183; youtube.com/@radbuilds3000</div>
-      <div class="ecofil-gallery">
-        <div class="gallery-main">
-          <img id="gm-rad" src="rad-build3.jpg" alt="Ryan in RAD Builds workshop" style="display:none;width:100%;height:100%;object-fit:cover;" />
-          <video id="gv-rad" autoplay muted loop playsinline style="display:block;width:100%;height:100%;object-fit:cover;border-radius:8px;"><source src="Liv_Mas_Scholarship_Video_1.mp4" type="video/mp4"></video>
-          <div class="gallery-caption" id="gc-rad">RAD Builds YouTube Channel</div>
-        </div>
-        <div class="gallery-thumbs" id="rad-thumbs">
-          <div class="thumb thumb-video" style="background-image:url('livmas-thumb.jpg')" data-video="Liv_Mas_Scholarship_Video_1.mp4" data-caption="RAD Builds YouTube Channel" onclick="setMain(this,'rad')"><span class="play-icon">&#9654;</span></div>
-          <div class="thumb thumb-video" style="background-image:url('rad-vid2-thumb.jpg')" data-video="rad-vid2.mp4" data-caption="Iron-Man helmet" onclick="setMain(this,'rad')"><span class="play-icon">&#9654;</span></div>
-          <div class="thumb thumb-video" style="background-image:url('rad-vid1-thumb.jpg')" data-video="rad-vid1.mp4" data-caption="Moving Spider-Man mask lense" onclick="setMain(this,'rad')"><span class="play-icon">&#9654;</span></div>
-          <div class="thumb thumb-video" style="background-image:url('rad-vid3-thumb.jpg')" data-video="rad-vid3.mp4" data-caption="Doctor Strange's Eye of Agamotto" onclick="setMain(this,'rad')"><span class="play-icon">&#9654;</span></div>
-          <div class="thumb thumb-video" style="background-image:url('rad-vid4-thumb.jpg')" data-video="rad-vid4.mp4" data-caption="Working Spider-Man web shooter" onclick="setMain(this,'rad')"><span class="play-icon">&#9654;</span></div>
-          <div class="thumb-more" id="rad-more-btn" onclick="expandGallery('rad')" style="background-image:url('rad-build4.jpg')"><span>+9</span></div>
-          <img class="thumb thumb-extra" src="rad-build4.jpg" data-caption="Working in the workshop" onclick="setMain(this,'rad')" alt="Garage workshop" />
-          <img class="thumb thumb-extra" src="rad-new1.jpg" data-caption="Detailed Darth Vader lower mask" onclick="setMain(this,'rad')" alt="ODM gear props" />
-          <img class="thumb thumb-extra" src="rad-new2.jpg" data-caption="Attack on Titan ODM gear — full prop set laid out" onclick="setMain(this,'rad')" alt="Internal prop mechanism" />
-          <img class="thumb thumb-extra" src="rad-new3.jpg" data-caption="Hand-painted<br>How to Train Your Dragon shield" onclick="setMain(this,'rad')" alt="HTTYD painted shield" />
-          <img class="thumb thumb-extra" src="rad-new7.jpg" data-caption="Thor's Hammer &amp; Stormbreaker prop builds" onclick="setMain(this,'rad')" alt="Thor's Hammer and Stormbreaker" />
-          <img class="thumb thumb-extra" src="rad-new8.jpg" data-caption="Avengers: Infinty War Mural" onclick="setMain(this,'rad')" alt="RAD Builds" />
-          <img class="thumb thumb-extra" src="rad-new6.jpg" data-caption="RAD Builds props build displayed" onclick="setMain(this,'rad')" alt="RAD Builds" />
-          <img class="thumb thumb-extra" src="rad-new5.jpg" data-caption="Drafting out schematics" onclick="setMain(this,'rad')" alt="Percy Jackson sword YouTube" />
-          <img class="thumb thumb-extra" src="rad-build1.jpg" data-caption="Working at the desk" onclick="setMain(this,'rad')" alt="Prop detail work" />
-          <div class="thumb-less" onclick="expandGallery('rad')">Show less</div>
-        </div>
-      </div>
-    </div>
-
-
-    <div class="project-card">
-      <div class="project-badge">Personal</div>
-      <h3>Laser-Cut Family Gifts</h3>
-      <p>Designed and laser-cut a series of custom engraved wood photo frames as gifts, each with a unique decorative border pattern (fleur-de-lis, Greek key, wave) and a high-detail photo engraved onto the wood surface.</p>
-      <div class="project-tags" style="margin-bottom:14px;">
-        <span class="tag">SolidWorks</span>
-        <span class="tag">Laser Cutting</span>
-      </div>
-      <div class="lc-gallery">
-        <div class="gallery-main">
-          <img id="gm-lc" src="lc-all-frames.jpg" alt="All three laser-cut frames" style="width:100%;border-radius:8px;max-height:320px;object-fit:cover;" />
-          <div class="gallery-caption" id="gc-lc">Three custom laser-cut frames — Eiffel Tower, Mont Saint-Michel, and Greek ruins</div>
-        </div>
-        <div class="gallery-thumbs">
-          <img class="thumb active" src="lc-all-frames.jpg" data-caption="Three custom laser-cut frames — Eiffel Tower, Mont Saint-Michel, and Greek ruins" onclick="setMain(this,'lc')" alt="All frames together" />
-          <img class="thumb" src="lc-eiffel.jpg" data-caption="Parents wtih Eiffel Tower engraving" onclick="setMain(this,'lc')" alt="Eiffel Tower frame" />
-          <img class="thumb" src="lc-greek.jpg" data-caption="Temple of Poseidon engraving" onclick="setMain(this,'lc')" alt="Greek ruins frame" />
-          <img class="thumb" src="lc-mont.jpg" data-caption="Mont Saint-Michel panoramic engraving" onclick="setMain(this,'lc')" alt="Mont Saint-Michel frame" />
-          <img class="thumb" src="Paris Frame CAD.png" data-caption="Designing the fleur-de-lis frame" onclick="setMain(this,'lc')" alt="Paris frame CAD" />
-          <img class="thumb" src="Greek Frame.png" data-caption="Designing the Greek fret frame" onclick="setMain(this,'lc')" alt="Greek frame CAD" />
-          <img class="thumb" src="Le Mont Frame CAD.png" data-caption="Designing the wavy<br>Mont Saint-Michel frame — CAD design" onclick="setMain(this,'lc')" alt="Le Mont frame CAD" />
-        </div>
-      </div>
-    </div>
-
-
-
-    <div class="project-card">
-      <div class="project-badge">Experimental</div>
-      <h3>DC Motor &#8211; From Raw Materials</h3>
-      <p>Wound and assembled a fully functional DC motor from copper coils and a handmade wood frame, demonstrating fundamental electromagnetic and mechanical engineering principles.</p>
-      <div class="project-tags">
-        <span class="tag">Electrical</span>
-        <span class="tag">Fabrication</span>
-        <span class="tag">Coil Winding</span>
-      </div>
-      
-      <div class="ecofil-gallery" style="margin-top:14px;">
-        <div class="gallery-main" style="height:auto;aspect-ratio:1/1;">
-          <img id="gm-motor" src="rad-desk.jpg" alt="DC motor" style="display:none;" />
-          <video id="gv-motor" autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover;border-radius:8px;display:block;">
-            <source src="motor-demo.mp4" type="video/mp4">
-          </video>
-          <div class="gallery-caption" id="gc-motor">DC motor wound from copper coils and wood — watch it spin</div>
-        </div>
-
-      </div>
-    </div>
-
-
-    <div class="project-card">
-      <div class="project-badge">Personal &#183; Business</div>
-      <h3>Graphic Design &amp; Merchandise</h3>
-      <p>Alongside my engineering work, I design logos, brand identities, and merchandise graphics from scratch. From the RAD Builds brand and YouTube channel art I started in custom apparel and event graphics. Now even in college I continue this graphic design and merchandise production aspect of my life, where I approach every design the way I approach every build — with attention to detail and a clear vision of the final product.</p>
-      <div class="project-tags" style="margin-bottom:14px;">
-        <span class="tag">Illustrator</span>
-        <span class="tag">Logo Design</span>
-        <span class="tag">Merch Graphics</span>
-        <span class="tag">Brand Identity</span>
-      </div>
-      <div class="ecofil-gallery" style="margin-top:14px;">
-        <div class="gallery-main">
-          <img id="gm-gd" src="IMG_1668(1).jpg" alt="RAD Builds merchandise design" style="display:block;width:100%;height:100%;object-fit:cover;" />
-          <div class="gallery-caption" id="gc-gd">Kyle Field design for ASME</div>
-        </div>
-        <div class="gallery-thumbs" id="gd-thumbs">
-          <img class="thumb active" src="IMG_1668(1).jpg" data-caption="Kyle Field design for ASME" onclick="setMain(this,'gd')" alt="Design" />
-          <img class="thumb" src="gd-2.jpg" data-caption="Europe Vacation design" onclick="setMain(this,'gd')" alt="Design 2" />
-          <img class="thumb" src="gd-10.jpg" data-caption="Alaskan Cruise design" onclick="setMain(this,'gd')" alt="Design 10" />
-          <div class="thumb-more" id="gd-more-btn" onclick="expandGallery('gd')" style="background-image:url('IMG_1538.jpg')"><span>+12</span></div>
-          <img class="thumb thumb-extra" src="IMG_1538.jpg" data-caption="Hand-drawn EcoFil logo" onclick="setMain(this,'gd')" alt="EcoFil logo" />
-          <img class="thumb thumb-extra" src="gd-14.jpg" data-caption="Fun physics T-shirt" onclick="setMain(this,'gd')" alt="Design 14" />
-          <img class="thumb thumb-extra" src="gd-photo1.jpg" data-caption="Alien creature T-shirt" onclick="setMain(this,'gd')" alt="Design photo 1" />
-          <img class="thumb thumb-extra" src="gd-photo2.jpg" data-caption="Band parent T-shirt" onclick="setMain(this,'gd')" alt="Design photo 2" />
-          <img class="thumb thumb-extra" src="gd-photo3.jpg" data-caption="RAD Builds merchandise" onclick="setMain(this,'gd')" alt="Design photo 3" />
-          <img class="thumb thumb-extra" src="gd-photo4.jpg" data-caption="70+ Royal Purple (local band) merchandise" onclick="setMain(this,'gd')" alt="Design photo 4" />
-          <img class="thumb thumb-extra" src="gd-photo5.jpg" data-caption="Soccer coach T-shirt" onclick="setMain(this,'gd')" alt="Design photo 5" />
-          <img class="thumb thumb-extra" src="gd-photo6.jpg" data-caption="Funny Stitch T-shirt" onclick="setMain(this,'gd')" alt="Design photo 6" />
-          <img class="thumb thumb-extra" src="gd-photo7.jpg" data-caption="Camp Halfblood T-shirt" onclick="setMain(this,'gd')" alt="Design photo 7" />
-          <img class="thumb thumb-extra" src="gd-photo8.jpg" data-caption="Tennis athletes State championship jersey" onclick="setMain(this,'gd')" alt="Design photo 8" />
-          <img class="thumb thumb-extra" src="gd-photo9.jpg" data-caption="Spider-Man T-shirt" onclick="setMain(this,'gd')" alt="Design photo 9" />
-          <img class="thumb thumb-extra" src="gd-photo10.jpg" data-caption="Graphic design — merchandise" onclick="setMain(this,'gd')" alt="Design photo 10" />
-          <div class="thumb-less" onclick="expandGallery('gd')">Show less</div>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<section id="experience">
-  <div class="section-label">Experience</div>
-  <h2>Work &amp; Leadership</h2>
-  <div class="divider"></div>
-  <div class="edu-card">
-    <div class="edu-icon">&#127891;</div>
-    <div class="edu-info">
-      <h3>Texas A&amp;M University &#8212; B.S. Mechanical Engineering, Minors in Physics & Mathematics</h3>
-      <p>College Station, TX &#183; Expected May 2028</p>
-      <p>Relevant Coursework: Solid Mechanics, Thermodynamics, Geometric Modeling, Numerical Methods, Materials Engineering, Engineering Economic Analysis</p>
-      <span class="gpa">GPA: 3.93</span>
-      <span class="honors">Engineering Honors</span>
-      <span class="honors">Dean's Honor Roll</span>
-    </div>
-  </div>
-  <div class="timeline">
-    <div class="timeline-item">
-      <div class="tl-dot">&#127959;</div>
-      <div class="tl-content">
-        <div class="tl-header">
-          <div><div class="tl-title">Military Housing Warehouse &amp; Customer Service Intern</div><div class="tl-org">Frontier Heritage Communities / The Michael's Organization &#183; Fort Leavenworth, KS</div></div>
-          <div class="tl-date">May &#8211; Jul 2025</div>
-        </div>
-        <ul>
-          <li>Assisted HVAC and plumbing maintenance teams, sourcing components and supporting field repairs across 200+ military residences</li>
-          <li>Operated forklift and company vehicles to transport and install residential appliances</li>
-          <li>Maintained safety protocols in active job-site environments; coordinated across multiple skilled trades teams</li>
-        </ul>
-      </div>
-    </div>
-    <div class="timeline-item">
-      <div class="tl-dot">&#128295;</div>
-      <div class="tl-content">
-        <div class="tl-header">
-          <div><div class="tl-title">Incoming Technical Projects Officer (2026&#8211;27) &#183; Merchandise Officer</div><div class="tl-org">American Society of Mechanical Engineers (ASME) &#183; Texas A&amp;M Chapter</div></div>
-          <div class="tl-date">Aug 2024 &#8211; Present</div>
-        </div>
-        <ul>
-          <li>Selected as incoming Technical Projects Officer &#8212; will lead and coordinate student technical project teams in 2026&#8211;27</li>
-          <li>Currently manage 500+ branded merchandise orders for professional development and networking events</li>
-          <li>Won Sophomore Retreat &#8212; a competitive 40-member engineering design and networking competition</li>
-        </ul>
-      </div>
-    </div>
-    <div class="timeline-item">
-      <div class="tl-dot">&#9851;&#65039;</div>
-      <div class="tl-content">
-        <div class="tl-header">
-          <div><div class="tl-title">Treasurer &amp; Public Relations Officer &#183; Presentation Lead</div><div class="tl-org">EcoFil &#183; Aggies Create, Texas A&amp;M</div></div>
-          <div class="tl-date">Jan 2025 &#8211; Present</div>
-        </div>
-        <ul>
-          <li>15+ hours/week hands-on fabrication for a closed-loop 3D printing recycling system</li>
-          <li>Manage project budget and BOMs; lead sponsorship outreach and public LinkedIn updates</li>
-          <li>Fabricated custom metal convection oven with plasma cutting, angle grinding, and welding</li>
-        </ul>
-      </div>
-    </div>
-    <div class="timeline-item">
-      <div class="tl-dot">&#9917;</div>
-      <div class="tl-content">
-        <div class="tl-header">
-          <div><div class="tl-title">Intramural Soccer Referee &amp; Multi-Sport Scorekeeper</div><div class="tl-org">Texas A&amp;M Department of Recreational Sports &#183; College Station, TX</div></div>
-          <div class="tl-date">Jan 2025 &#8211; Present</div>
-        </div>
-        <ul>
-          <li>Officiate 12+ intramural games per night for 125+ players; enforce rules and manage high-pressure situations</li>
-          <li>Selected to officiate the intramural championship game &#8212; reserved for the highest-rated referees</li>
-        </ul>
-      </div>
-    </div>
-    <div class="timeline-item">
-      <div class="tl-dot">&#127908;</div>
-      <div class="tl-content">
-        <div class="tl-header">
-          <div><div class="tl-title">Founder &amp; Operator &#8212; RAD Builds&#8482;</div><div class="tl-org">Personal Business &#183; Lansing, KS</div></div>
-          <div class="tl-date">Aug 2022 &#8211; Feb 2026</div>
-        </div>
-        <ul>
-          <li>Designed and built custom props and merchandise; fulfilled 30+ item batch orders for bands, cruise groups, and more</li>
-          <li>Produced instructional fabrication videos for 1,000+ YouTube subscribers</li>
-          <li>Managed material selection, budgeting, production timelines, and client delivery end-to-end</li>
-        </ul>
-      </div>
-    </div>
-    <div class="timeline-item">
-      <div class="tl-dot">&#127970;</div>
-      <div class="tl-content">
-        <div class="tl-header">
-          <div><div class="tl-title">Career Shadowing &#8212; Engineering Consultant</div><div class="tl-org">Professional Engineering Consultants (PEC) &#183; Kansas City, MO</div></div>
-          <div class="tl-date">Dec 2024</div>
-        </div>
-        <ul>
-          <li>Observed engineers designing a new HVAC system for a three-story hospital using Fusion 360</li>
-          <li>Gained exposure to project-based consulting and multi-client engineering deliverables</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="skills">
-  <div class="section-label">Skills</div>
-  <h2>Technical Toolkit</h2>
-  <div class="divider"></div>
-  <div class="skills-grid">
-    <div class="skill-group">
-      <div class="skill-group-title">&#128187; Software &amp; Programming</div>
-      <div class="skill-chips">
-        <span class="chip">Python</span><span class="chip">MATLAB</span><span class="chip">Java</span>
-        <span class="chip">SolidWorks</span><span class="chip">Onshape</span><span class="chip">Design Space</span>
-        <span class="chip">Microsoft Office</span>
-      </div>
-    </div>
-    <div class="skill-group">
-      <div class="skill-group-title">&#128297; Fabrication &amp; Tools</div>
-      <div class="skill-chips">
-        <span class="chip">Welding</span><span class="chip">Plasma Cutting</span><span class="chip">Lathe</span>
-        <span class="chip">Soldering</span><span class="chip">Rotary tool</span><span class="chip">Power Tools</span>
-	<span class="chip">Mitor saw</span><span class="chip">Belt sanding</span><span class="chip">Hardware</span>
-	<span class="chip">Laser-cutting</span><span class="chip">3D-printing</span>
-      </div>
-    </div>
-    <div class="skill-group">
-      <div class="skill-group-title">&#9881;&#65039; Engineering Skills</div>
-      <div class="skill-chips">
-        <span class="chip">CAD / Modeling</span><span class="chip">HTML Coding</span>
-        <span class="chip">Technical Drawing</span><span class="chip">Materials Selection</span>
-	<span class="chip">Design for Manufacturing</span><span class="chip">Prototyping</span>
-      </div>
-    </div>
-    <div class="skill-group">
-      <div class="skill-group-title">&#127775; Other Skills</div>
-      <div class="skill-chips">
-        <span class="chip">Graphic Design</span><span class="chip">Logo Design</span><span class="chip">Video Editing</span>
-        <span class="chip">Project Management</span><span class="chip">Technical Writing</span><span class="chip">Website Design</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="contact">
-  <div class="section-label">Contact</div>
-  <h2>Let&#8217;s Connect</h2>
-  <p class="section-intro">Whether you&#8217;re a recruiter, collaborator, or just curious about my work &#8212; I&#8217;d love to hear from you.</p>
-  <div class="contact-cards">
-    <a href="mailto:ryandenn05@gmail.com" class="contact-card">
-      <div class="contact-icon">&#x2709;</div>
-      <div class="contact-info"><strong>Email</strong><span>ryandenn05@gmail.com</span></div>
-    </a>
-    <a href="https://www.linkedin.com/in/ryandenn05" target="_blank" class="contact-card">
-      <div class="contact-icon">&#128188;</div>
-      <div class="contact-info"><strong>LinkedIn</strong><span>linkedin.com/in/ryandenn05</span></div>
-    </a>
-    <a href="https://www.youtube.com/@radbuilds3000" target="_blank" class="contact-card">
-      <div class="contact-icon">&#9654;</div>
-      <div class="contact-info"><strong>YouTube</strong><span>@radbuilds3000</span></div>
-    </a>
-  </div>
-</section>
-
-<footer style="background:#0a1a38;color:#64748b;text-align:center;padding:20px 5vw;font-size:0.82rem;">
-  &#169; 2026 Ryan Dennis &middot; Mechanical Engineering Student &middot; Texas A&amp;M University
-</footer>
-
-<script>
-function setMain(thumb, gid) {
-  const img = document.getElementById('gm-' + gid);
-  const vid = document.getElementById('gv-' + gid);
-  const cap = document.getElementById('gc-' + gid);
-  cap.innerHTML = thumb.dataset.caption;
-  thumb.closest('.gallery-thumbs').querySelectorAll('.thumb').forEach(t => t.classList.remove('active'));
-  thumb.classList.add('active');
-  if (thumb.dataset.video) {
-    if (img) img.style.display = 'none';
-    if (vid) { vid.src = thumb.dataset.video; vid.style.display = 'block'; vid.play(); }
-  } else {
-    if (vid) { vid.pause(); vid.style.display = 'none'; }
-    if (img) { img.src = thumb.getAttribute('src'); img.style.display = 'block'; }
-  }
-}
-function expandGallery(gid) {
-  const thumbs = document.getElementById(gid + '-thumbs');
-  thumbs.classList.toggle('gallery-expanded');
-}
-</script>
-</body>
-</                                                                          
+    .tag { background: #272727; color: #f1f1f1; border-radius: 20px; padding: 4px 12px; font-size: 0.75rem; font-weight: 500; }
