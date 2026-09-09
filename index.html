@@ -12,6 +12,7 @@
       color: #f1f1f1;
       background: #0f0f0f;
       line-height: 1.6;
+      overflow-x: hidden;
     }
     :root {
       --navy:   #0f0f0f;
@@ -130,6 +131,11 @@
     .tl-date { font-size: 0.8rem; background: var(--light); color: var(--accent); border-radius: 20px; padding: 3px 12px; font-weight: 600; white-space: nowrap; }
     .tl-content ul { padding-left: 18px; margin-top: 6px; }
     .tl-content li { color: var(--gray); font-size: 0.875rem; margin-bottom: 4px; }
+    .tl-roles { list-style: none; padding-left: 4px; }
+    .tl-role { position: relative; padding-left: 16px; font-weight: 700; color: var(--heading); font-size: 0.9rem; margin-bottom: 10px; }
+    .tl-role::before { content: '\2013'; position: absolute; left: 0; color: var(--gray); }
+    .tl-role ul { list-style: disc; padding-left: 18px; margin-top: 6px; }
+    .tl-role ul li { font-weight: 400; color: var(--gray); font-size: 0.875rem; margin-bottom: 4px; }
     .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 24px; }
     .skill-group { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 22px; box-shadow: var(--shadow); }
     .skill-group-title { font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 14px; padding-bottom: 8px; border-bottom: 2px solid var(--light); }
@@ -191,7 +197,7 @@
     .play-icon { font-size: 1.4rem; color: #fff; pointer-events: none; position: relative; z-index: 1; filter: drop-shadow(0 1px 3px rgba(0,0,0,0.6)); }
     .thumb-video:hover .play-icon { transform: scale(1.15); transition: transform 0.15s; }
     .gallery-expanded .thumb-less { display: block; }
-    .thumb { flex: 1; height: 52px; object-fit: cover; border-radius: 5px; cursor: pointer; opacity: 0.55; border: 2px solid transparent; transition: opacity 0.2s, border-color 0.2s; }
+    .thumb { flex: 0 0 52px; width: 52px; height: 52px; object-fit: cover; border-radius: 5px; cursor: pointer; opacity: 0.55; border: 2px solid transparent; transition: opacity 0.2s, border-color 0.2s; }
     .thumb:hover { opacity: 0.85; }
     .thumb.active { opacity: 1; border-color: var(--accent); }
     /* Featured RAD Builds card */
@@ -208,6 +214,9 @@
       font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em;
       border-radius: 4px; padding: 3px 10px; margin-bottom: 12px; margin-right: 8px;
     }
+    .rad-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+    .rad-header-text { flex: 1; min-width: 280px; }
+    .rad-header img { max-width: 220px; width: 40%; min-width: 140px; height: auto; flex-shrink: 0; }
     .rad-layout { display: grid; grid-template-columns: 1.1fr 1fr; gap: 28px; align-items: start; }
     @media (max-width: 800px) { .rad-layout { grid-template-columns: 1fr; } }
     .rad-stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 16px; }
@@ -253,7 +262,7 @@
     </div>
   </div>
   <div class="hero-photo-wrap">
-    <img src="headshot.jpg" alt="RAD Builds Logo" />
+    <img src="headshot.jpg" alt="Ryan Dennis" />
   </div>
 </section>
 
@@ -279,11 +288,15 @@
 </section>
 
 <section id="rad-builds">
-  <div class="section-label">Flagship Project</div>
-  <img src="rad-builds-logo.jpg" alt="RAD Builds Logo" style="display:block;max-width:280px;width:60%;height:auto;margin-bottom:14px;" />
-  <h2>RAD Builds&#8482; &#8212; Prop Fabrication &amp; YouTube</h2>
-  <div class="divider"></div>
-  <p class="section-intro">My biggest personal project: a movie-prop fabrication business and YouTube channel I've run since high school, now a monetized YouTube Partner with 2,000+ subscribers.</p>
+  <div class="rad-header">
+    <div class="rad-header-text">
+      <div class="section-label">Flagship Project</div>
+      <h2>RAD Builds&#8482; &#8212; Prop Fabrication &amp; YouTube</h2>
+      <div class="divider"></div>
+      <p class="section-intro">My biggest personal project: a movie-prop fabrication business and YouTube channel I've run since high school, now a monetized YouTube Partner with 2,000+ subscribers.</p>
+    </div>
+    <img src="rad-builds-logo.jpg" alt="RAD Builds Logo" />
+  </div>
   <div class="project-card featured" style="max-width:1100px;margin:0 auto;">
     <span class="project-badge">Personal &#183; Business &#183; Ongoing</span>
     <h3>RAD Builds&#8482; &#8211; YouTube &amp; Prop Commissioning</h3>
@@ -320,7 +333,26 @@
             <div class="thumb thumb-video" style="background-image:url('livmas-thumb.jpg')" data-video="Liv_Mas_Scholarship_Video_1.mp4" data-caption="RAD Builds YouTube Channel" onclick="setMain(this,'rad')"><span class="play-icon">&#9654;</span></div>
             <div class="thumb thumb-video" style="background-image:url('rad-vid2-thumb.jpg')" data-video="rad-vid2.mp4" data-caption="Iron-Man helmet" onclick="setMain(this,'rad')"><span class="play-icon">&#9654;</span></div>
             <div class="thumb thumb-video" style="background-image:url('rad-vid1-thumb.jpg')" data-video="rad-vid1.mp4" data-caption="Moving Spider-Man mask lense" onclick="setMain(this,'rad')"><span class="play-icon">&#9654;</span></div>
-            <div class="thumb thumb-video" style="background-image:url('rad-vid3-thumb.jpg')" data-video="rad-vid3.mp4" data-caption="Doctor
+            <div class="thumb thumb-video" style="background-image:url('rad-vid3-thumb.jpg')" data-video="rad-vid3.mp4" data-caption="Doctor Strange's Eye of Agamotto" onclick="setMain(this,'rad')"><span class="play-icon">&#9654;</span></div>
+            <div class="thumb thumb-video" style="background-image:url('rad-vid4-thumb.jpg')" data-video="rad-vid4.mp4" data-caption="Working Spider-Man web shooter" onclick="setMain(this,'rad')"><span class="play-icon">&#9654;</span></div>
+            <div class="thumb-more" id="rad-more-btn" onclick="expandGallery('rad')" style="background-image:url('rad-build4.jpg')"><span>+9</span></div>
+            <img class="thumb thumb-extra" src="rad-build4.jpg" data-caption="Working in the workshop" onclick="setMain(this,'rad')" alt="Garage workshop" />
+            <img class="thumb thumb-extra" src="rad-new1.jpg" data-caption="Detailed Darth Vader lower mask" onclick="setMain(this,'rad')" alt="ODM gear props" />
+            <img class="thumb thumb-extra" src="rad-new2.jpg" data-caption="Attack on Titan ODM gear — full prop set laid out" onclick="setMain(this,'rad')" alt="Internal prop mechanism" />
+            <img class="thumb thumb-extra" src="rad-new3.jpg" data-caption="Hand-painted<br>How to Train Your Dragon shield" onclick="setMain(this,'rad')" alt="HTTYD painted shield" />
+            <img class="thumb thumb-extra" src="rad-new7.jpg" data-caption="Thor's Hammer &amp; Stormbreaker prop builds" onclick="setMain(this,'rad')" alt="Thor's Hammer and Stormbreaker" />
+            <img class="thumb thumb-extra" src="rad-new8.jpg" data-caption="Avengers: Infinty War Mural" onclick="setMain(this,'rad')" alt="RAD Builds" />
+            <img class="thumb thumb-extra" src="rad-new6.jpg" data-caption="RAD Builds props build displayed" onclick="setMain(this,'rad')" alt="RAD Builds" />
+            <img class="thumb thumb-extra" src="rad-new5.jpg" data-caption="Drafting out schematics" onclick="setMain(this,'rad')" alt="Percy Jackson sword YouTube" />
+            <img class="thumb thumb-extra" src="rad-build1.jpg" data-caption="Working at the desk" onclick="setMain(this,'rad')" alt="Prop detail work" />
+            <div class="thumb-less" onclick="expandGallery('rad')">Show less</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="projects">
   <div class="section-label">Engineering Projects</div>
   <h2>Engineering &amp; Academic Work</h2>
